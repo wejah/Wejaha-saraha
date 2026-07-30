@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#160c2e">
+<title>گيم وحل فشي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night: #160c2e;
+    --night-2: #2a1155;
+    --amber: #ffcf5c;
+    --coral: #ff6b8b;
+    --violet: #a97bff;
+    --mist: rgba(255,255,255,.72);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{ height:100%; }
+
+  body{
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: max(24px, env(safe-area-inset-top)) 20px;
+    font-family:"Cairo", system-ui, sans-serif;
+    color:#fff;
+    background:
+      radial-gradient(120% 90% at 20% 0%, #3a1670 0%, transparent 55%),
+      radial-gradient(120% 100% at 90% 100%, #4a1250 0%, transparent 50%),
+      linear-gradient(160deg, var(--night) 0%, var(--night-2) 100%);
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* floating soft orbs for gentle atmosphere */
+  .orb{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:.45;
+    z-index:0;
+    animation:drift 14s ease-in-out infinite;
+  }
+  .orb.a{ width:280px; height:280px; background:var(--coral); top:-60px; inset-inline-start:-40px; }
+  .orb.b{ width:320px; height:320px; background:var(--violet); bottom:-80px; inset-inline-end:-60px; animation-delay:-5s; }
+  .orb.c{ width:200px; height:200px; background:var(--amber); top:40%; inset-inline-start:60%; animation-delay:-9s; opacity:.28; }
+
+  @keyframes drift{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(0,-26px) scale(1.08); }
+  }
+
+  .stage{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:26px;
+  }
+
+  .badge{
+    font-family:"Cairo", sans-serif;
+    font-weight:600;
+    font-size:clamp(.72rem, 3.4vw, .95rem);
+    letter-spacing:.12em;
+    color:var(--mist);
+    padding:8px 18px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(8px);
+  }
+
+  .title{
+    font-family:"Lalezar", "Cairo", sans-serif;
+    font-weight:400;
+    line-height:1.15;
+    font-size:clamp(3.2rem, 20vw, 9rem);
+    background:linear-gradient(120deg, var(--amber) 0%, var(--coral) 45%, var(--violet) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    filter:drop-shadow(0 8px 40px rgba(255,107,139,.35));
+    animation:rise .9s cubic-bezier(.2,.8,.2,1) both;
+  }
+
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(30px) scale(.94); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+  }
+
+  .rule{
+    width:64px; height:4px; border-radius:4px;
+    background:linear-gradient(90deg, var(--amber), var(--coral));
+    opacity:.85;
+    animation:rise 1s .15s cubic-bezier(.2,.8,.2,1) both;
+  }
+
+  .sub{
+    font-family:"Cairo", sans-serif;
+    font-weight:400;
+    font-size:clamp(.9rem, 4vw, 1.15rem);
+    color:var(--mist);
+    max-width:22ch;
+    animation:rise 1s .3s cubic-bezier(.2,.8,.2,1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .orb,.title,.rule,.sub{ animation:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+  <div class="orb c"></div>
+
+  <main class="stage">
+    <span class="badge">مرحبا 👾</span>
+    <h1 class="title">گيم وحل فشي</h1>
+    <div class="rule"></div>
+    <p class="sub">صفحة بسيطة — تشتغل على التلفون والكمبيوتر</p>
+  </main>
+</body>
+</html>
